@@ -1,0 +1,21 @@
+<script>
+    // 封装函数进行对象的深拷贝
+    function deepClone(obj) {
+        // 判断传入的数据类型，从而创建一个对应的空数据
+        let objClone = Array.isArray(obj) ? [] : {};
+        if (obj && typeof obj === 'object') {
+            for(let key in obj){
+                if(obj.hasOwnProperty(key)){
+                    if(obj[key]&&typeof obj[key]==='object'){
+                        objClone[key]=deepClone(obj[key])
+                    }else{
+                        objClone[key] = obj[key]
+                    }
+                }
+            }
+        }
+        return objClone;
+    }
+</script>
+
+<!-- 添加文件 -->
